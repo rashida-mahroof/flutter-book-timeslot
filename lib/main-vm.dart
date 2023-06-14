@@ -30,7 +30,7 @@ List<DaysModel> daysModelList = [];
     if (selectedDay != null) {
       if (daysList.any((day) => day.day == selectedDay)) {
        timeSlotList.add(TimeSlotModel(from: fromTime,to: toTime));
-        print('Day Already added');
+       print(timeSlotList.toString());
       } else {
         daysList.add(DaysModel(day: selectedDay!));
       }

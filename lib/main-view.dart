@@ -83,20 +83,31 @@ class MyView extends StatelessWidget {
                 ElevatedButton(onPressed: (){
                   provider.addSelectedDayToModel();
                 }, child: Text('Add')),
-                Expanded(
-                  child: ListView.builder(
-                    itemCount: provider.daysList.length,
-                    itemBuilder: (BuildContext,index){
-                      final d =  provider.daysList[index];
-                    return Card(
-                     child: ListTile(
-                      title: Text(d.day.toString())
-                      
-                      ),
-                    );
-                  }),
-                )
-              ],
+               Expanded(
+  child: ListView.builder(
+    itemCount: provider.daysList.length,
+    itemBuilder: (BuildContext context, int index) {
+      final d = provider.daysList[index];
+      return Card(
+        child: ListTile(
+          title: Text(d.day.toString()),
+          subtitle: Container(
+            height: 200,
+            child: ListView.builder(
+              itemCount: provider.timeSlotList.length,
+              itemBuilder: (BuildContext context, int index) {
+                final a = provider.timeSlotList[index];
+                return Text(a.from! + '-' + a.to!);
+              },
+            ),
+          ),
+        ),
+      );
+    },
+  ),
+)
+
+               ],
             ),
           ),
         );
